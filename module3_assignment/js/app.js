@@ -61,10 +61,11 @@
         narrowCtrl.searchString = "";
         narrowCtrl.found =[];
         narrowCtrl.onRemoveBtnClick = function(index){
-            console.log(narrowCtrl.found[index]);
                 narrowCtrl.found.splice(index,1);
         };
         narrowCtrl.onNarrowBtnClick = function(){
+            narrowCtrl.found = [];
+            narrowCtrl.nfMsg = undefined;
             if (narrowCtrl.searchString.length==0)
                 {
                     narrowCtrl.nfMsg="Not Found";
@@ -73,8 +74,10 @@
             MenuSearchService.getMatchedMenuItems(narrowCtrl.searchString)
             .then(
                 function(response){
-                    if (response)
+                    if (response.length!=0)
+                    {
                         narrowCtrl.found = response;
+                    }
                     else {
                         narrowCtrl.nfMsg = "Not Found";
                     }

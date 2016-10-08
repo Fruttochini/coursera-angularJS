@@ -20,10 +20,11 @@
            <button class="btn btn-primary" ng-click="narrowCtrl.onNarrowBtnClick()">Narrow It Down For Me!</button>
        </div>
        <div>
-           <found-items found-items-list="narrowCtrl.found" ng-if="narrowCtrl.found.length>1"
+           <found-items found-items-list="narrowCtrl.found" ng-if="narrowCtrl.found.length>=1"
                on-remove="narrowCtrl.onRemoveBtnClick(index)">
            </found-items>
         </div>
+        <div ng-if="narrowCtrl.nfMsg">{{narrowCtrl.nfMsg}}</div>
   </div>
 
 </body>
